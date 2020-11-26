@@ -36,6 +36,7 @@ CAR-REVIEW
 | email              | string  | unique: true |
 | phone_number       | string  | null: false  |
 | birthday           | date    | null: false  |
+| postal_code        | string  | null: false  |
 | encrypted_password | string  | null: false  |
 | prefecture_id      | integer | null: false  |
 | municipality       | string  | null: false  |
@@ -46,6 +47,8 @@ CAR-REVIEW
 
 - has_many :reviews
 - has_many :comments
+
+
 
 ## reviews テーブル
 | Column                 | Type       | Options                        |
