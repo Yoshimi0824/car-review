@@ -1,0 +1,36 @@
+<%= render "shared/header" %>
+
+<%= form_with model: @address, local: true do |f| %>
+<%= render "devise/shared/error_messages", model: f.object %>
+
+<div class="container">
+    <div class="panel panel-default">
+      <div class="panel-heading">住所情報登録</div>
+      <div class="panel-body">
+          <div class="form-group">
+            <label class="control-label">郵便番号</label>
+            <%= f.text_field :postal_code, class:"form-control", placeholder:"ハイフン(-)を入れてください" %>
+          </div>
+          <div class="form-group">
+            <label class="control-label">都道府県</label>
+            <%= f.collection_select(:prefecture_id, Prefecture.all, :id, :name, {}, class:"select-box") %>
+          <div class="form-group">
+            <label class="control-label">市区町村</label>
+            <%= f.text_field :municipality, class:"form-control", placeholder:"横浜市中区" %>
+          </div>
+          <div class="form-group">
+            <label class="control-label">番地</label>
+            <%= f.text_field :street_number, class:"form-control", placeholder:"青山1-1-1" %>
+          </div>
+          <div class="form-group">
+            <label class="control-label">建物名</label>
+            <%= f.text_field :building_name, class:"form-control", placeholder:"柳ビル201" %>
+          </div>
+          <div class="btn btn-default">
+            <%= f.submit "登録", class:"btn btn-primary" %>
+          </div>
+      </div>
+    </div>
+</div>
+<% end %>
+
