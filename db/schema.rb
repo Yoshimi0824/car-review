@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_25_032512) do
+ActiveRecord::Schema.define(version: 2020_11_26_023949) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "postal_code", null: false
@@ -22,6 +22,25 @@ ActiveRecord::Schema.define(version: 2020_11_25_032512) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_addresses_on_user_id"
+  end
+
+  create_table "reviews", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "automaker", null: false
+    t.string "model_of_car", null: false
+    t.string "grade", null: false
+    t.integer "era_name_id", null: false
+    t.integer "model_year", null: false
+    t.integer "design_id", null: false
+    t.integer "driving_performance_id", null: false
+    t.integer "ride_comfort_id", null: false
+    t.integer "lording_id", null: false
+    t.integer "fuel_economy_id", null: false
+    t.text "goof_point", null: false
+    t.text "bad_point", null: false
+    t.bigint "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -40,4 +59,5 @@ ActiveRecord::Schema.define(version: 2020_11_25_032512) do
   end
 
   add_foreign_key "addresses", "users"
+  add_foreign_key "reviews", "users"
 end

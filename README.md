@@ -34,30 +34,39 @@ CAR-REVIEW
 | ------------------ | ------- | ------------ |
 | nickname           | string  | unique: true |
 | email              | string  | unique: true |
+| encrypted_password | string  | null: false  |
 | phone_number       | string  | null: false  |
 | birthday           | date    | null: false  |
-| postal_code        | string  | null: false  |
-| encrypted_password | string  | null: false  |
-| prefecture_id      | integer | null: false  |
-| municipality       | string  | null: false  |
-| street_number      | string  | null: false  |
-| building_name      | string  |              |
 
 ### Association
 
 - has_many :reviews
 - has_many :comments
+- has_one :address
 
+
+## addresses テーブル
+| Column             | Type    | Options      |
+| ------------------ | ------- | ------------ |
+| postal_code        | string  | null: false  |
+| prefecture_id      | integer | null: false  |
+| municipality       | string  | null: false  |
+| street_number      | string  | null: false  |
+| building_name      | string  |              |
+
+### Associations
+
+- belongs_to :user
 
 
 ## reviews テーブル
 | Column                 | Type       | Options                        |
 | ---------------------- | ---------- | ------------------------------ |
 | automaker_id           | integer    | null: false                    |
-| vehicle_type           | string     | null: false                    |
+| model_of_car           | string     | null: false                    |
 | grade                  | string     | null: false                    |
-| model_year_wareki_id   | integer    | null: false                    |
-| model_year             | string     | null: false                    |
+| era_name_id            | integer    | null: false                    |
+| model_year             | integer    | null: false                    |
 | design_id              | integer    | null: false                    |
 | driving_performance_id | integer    | null: false                    |
 | ride_comfort_id        | integer    | null: false                    |
@@ -73,6 +82,11 @@ CAR-REVIEW
 - has_many :comments
 
 ## comments テーブル
+| Column | Type       | Options                        |
+| ------ | ---------- | ------------------------------ |
+| text   | text       | null: false                    |
+| user   | references | null: false, foreign_key: true |
+| review | references | null: false, foreign_key: true |
 
 - belongs_to :user
 - belongs_to :review
