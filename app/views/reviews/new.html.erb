@@ -1,0 +1,63 @@
+<%= render "shared/header" %>
+
+<%= form_with model: @user, url: user_registration_path, local: true do |f| %>
+<%# render "shared/error_messages", model: f.object %>
+
+<div class="container">
+    <div class="panel panel-default">
+      <div class="panel-heading">新規レビュー投稿</div>
+      <div class="panel-body">
+          <div class="form-group">
+            <label class="control-label">メーカー</label>
+            <%= f.collection_select(:automaker_id, Automaker.all, :id, :name, {}, class:"form-control") %>
+          </div>
+          <div class="form-group">
+            <label class="control-label">車種</label>
+            <%= f.text_field :model_of_car, class:"form-control", placeholder:"例）プリウス",maxlength:"20"%>
+          </div>
+          <div class="form-group">
+            <label class="control-label">年式</label>
+            <%= f.collection_select(:era_name_id, EraName.all, :id, :name, {}, class:"form-control") %>
+            <%= f.text_field :model_year, class:"form-control", placeholder:"例）30" %>
+          </div>
+          <div class="form-group">
+            <label class="control-label">デザイン</label>
+            <%= f.collection_select(:design_id, Evaluation.all, :id, :name, {}, class:"form-control") %>
+          </div>
+          <div class="form-group">
+            <label class="control-label">走行性能</label>
+            <%= f.collection_select(:driving_performance_id, Evaluation.all, :id, :name, {}, class:"form-control") %>
+          </div>
+          <div class="form-group">
+            <label class="control-label">乗り心地</label>
+            <%= f.collection_select(:ride_comfort_id, Evaluation.all, :id, :name, {}, class:"form-control") %>
+          </div>
+          <div class="form-group">
+            <label class="control-label">積載性</label>
+            <%= f.collection_select(:lording_id, Evaluation.all, :id, :name, {}, class:"form-control") %>
+          </div>
+          <div class="form-group">
+            <label class="control-label">燃費</label>
+            <%= f.collection_select(:fuel_economy_id, Evaluation.all, :id, :name, {}, class:"form-control") %>
+          </div>
+          <div class="form-group">
+            <label class="control-label">価格</label>
+            <%= f.collection_select(:price_id, Evaluation.all, :id, :name, {}, class:"form-control") %>
+          </div>
+          <div class="form-group">
+            <label class="control-label">良い点</label>
+            <%= f.text_area :good_point, class:"form-control", placeholder:"例）〜が素晴らしい！" %>
+          </div>
+          <div class="form-group">
+            <label class="control-label">悪い点</label>
+            <%= f.text_area :bad_point, class:"form-control", placeholder:"例）〜がいまいち…" %>
+          </div>
+
+
+          <div class="btn btn-default">
+            <%= f.submit "投稿", class:"btn btn-primary" %>
+          </div>
+      </div>
+    </div>
+</div>
+<% end %>

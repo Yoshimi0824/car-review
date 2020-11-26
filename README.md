@@ -66,12 +66,13 @@ CAR-REVIEW
 | model_of_car           | string     | null: false                    |
 | grade                  | string     | null: false                    |
 | era_name_id            | integer    | null: false                    |
-| model_year             | integer    | null: false                    |
+| model_year             | integer    |                                |
 | design_id              | integer    | null: false                    |
 | driving_performance_id | integer    | null: false                    |
 | ride_comfort_id        | integer    | null: false                    |
 | lording_id             | integer    | null: false                    |
 | fuel_economy_id        | integer    | null: false                    |
+| price                  | integer    | null: false                    |
 | good_point             | text       | null: false                    |
 | bad_point              | text       | null: false                    |
 | user                   | references | null: false, foreign_key: true |

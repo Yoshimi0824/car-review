@@ -8,8 +8,7 @@ class Review < ApplicationRecord
     validates :grade
     validates :good_point
     validates :bad_point
-    validates :model_year, format: { with: /\A[0-9]+\z/, message: 'は半角数字で入力してください' },
-                                  length: { maximum: 2 }
+    
     
     with options numericality: { other_than: 0, message: 'を選択してください' } do
       validates :automaker_id
@@ -19,8 +18,16 @@ class Review < ApplicationRecord
       validates :ride_comfort_id
       validates :lording_id
       validates :fuel_economy_id
+      validates :price
     end
   end
+  
+  validates :model_year, format: { with: /\A[0-9]+\z/, message: 'は半角数字で入力してください' },
+                                  length: { maximum: 2 }
 
+  extend ActiveHash::Associations::ActiveRecordExtensions
+  belongs_to :automaker
+  belongs_to :evaluation
+  belongs_to :era_name
 
 end
