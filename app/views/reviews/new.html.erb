@@ -1,6 +1,6 @@
 <%= render "shared/header" %>
 
-<%= form_with model: @user, url: user_registration_path, local: true do |f| %>
+<%= form_with model: @review, url: reviews_path, local: true do |f| %>
 <%# render "shared/error_messages", model: f.object %>
 
 <div class="container">
@@ -13,7 +13,11 @@
           </div>
           <div class="form-group">
             <label class="control-label">車種</label>
-            <%= f.text_field :model_of_car, class:"form-control", placeholder:"例）プリウス",maxlength:"20"%>
+            <%= f.text_field :model_of_car, class:"form-control", placeholder:"例）プリウス" %>
+          </div>
+          <div class="form-group">
+            <label class="control-label">グレード</label>
+            <%= f.text_field :grade, class:"form-control", placeholder:"例）TX" %>
           </div>
           <div class="form-group">
             <label class="control-label">年式</label>
