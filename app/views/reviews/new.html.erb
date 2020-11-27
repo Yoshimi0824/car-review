@@ -7,7 +7,17 @@
 <div class="container">
     <div class="panel panel-default">
       <div class="panel-heading">新規レビュー投稿</div>
-      <div class="panel-body">
+        <div class="panel-body">
+
+          <%# 画像投稿%>
+          <div class="form-group">
+            <label for="inputFile">画像添付</label>
+              <div class="custom-file">
+                <%= f.file_field :image, id:"item-image" %>
+              </div>
+          </div>
+          <%# /画像投稿%>
+
           <div class="form-group">
             <label class="control-label">メーカー</label>
             <%= f.collection_select(:automaker_id, Automaker.all, :id, :name, {}, class:"form-control") %>

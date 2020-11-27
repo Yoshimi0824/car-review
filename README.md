@@ -72,7 +72,7 @@ CAR-REVIEW
 | ride_comfort_id        | integer    | null: false                    |
 | lording_id             | integer    | null: false                    |
 | fuel_economy_id        | integer    | null: false                    |
-| price                  | integer    | null: false                    |
+| price_id                | integer    | null: false                    |
 | good_point             | text       | null: false                    |
 | bad_point              | text       | null: false                    |
 | user                   | references | null: false, foreign_key: true |
