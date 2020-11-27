@@ -1,7 +1,8 @@
 <%= render "shared/header" %>
 
 <%= form_with model: @review, url: reviews_path, local: true do |f| %>
-<%# render "shared/error_messages", model: f.object %>
+
+<%= render "shared/error_messages", model: f.object %>
 
 <div class="container">
     <div class="panel panel-default">
