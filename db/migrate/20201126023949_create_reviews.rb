@@ -5,7 +5,7 @@ class CreateReviews < ActiveRecord::Migration[6.0]
       t.string :model_of_car,            null: false
       t.string :grade,                   null: false
       t.integer :era_name_id,            null: false
-      t.integer :model_year
+      t.integer :model_year,             null: false
       t.integer :design_id,              null: false
       t.integer :driving_performance_id, null: false
       t.integer :ride_comfort_id,        null: false
