@@ -5,7 +5,7 @@ class User < ApplicationRecord
   has_many :comments
 
   with_options presence: true do
-    validates :nickname
+    validates :nickname, uniqueness: { case_sensitive: true }
     validates :birthday
     validates :phone_number, format: { with: /\A[0-9]+\z/, message: 'にはハイフン(-)を入れないでください' },
                              length: { maximum: 11 }
