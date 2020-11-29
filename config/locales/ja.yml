@@ -6,16 +6,22 @@ ja:
        birthday: 生年月日
        phone_number: 電話番号
      review:
-      automaker_id: メーカー
-      model_of_car: 車種
-      grade: グレード
-      era_name_id: 年式(元号)
-      model_year: 年式
-      design_id: デザイン
-      driving_performance_id: 走行性能
-      ride_comfort_id: 乗り心地
-      lording_id: 積載性
-      fuel_economy_id: 燃費
-      price_id: 価格
-      good_point: 良い点
-      bad_point: 悪い点
+       automaker_id: メーカー
+       model_of_car: 車種
+       grade: グレード
+       era_name_id: 年式(元号)
+       model_year: 年式
+       design_id: デザイン
+       driving_performance_id: 走行性能
+       ride_comfort_id: 乗り心地
+       lording_id: 積載性
+       fuel_economy_id: 燃費
+       price_id: 価格
+       good_point: 良い点
+       bad_point: 悪い点
+     address:
+       postal_code: 郵便番号
+       prefecture_id: 都道府県
+       municipality: 市町村
+       street_number: 番地
+       building_name: マンション名
