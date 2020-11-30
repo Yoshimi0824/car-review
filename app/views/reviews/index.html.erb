@@ -1,5 +1,24 @@
 <%= render "shared/header" %>
   
-  <h1>Hello, world!</h1>
-  <%= link_to "Sign up", '#', class: "btn btn-lg btn-primary" %>
+<%# レビュー一覧表示　%>
+<div class="container">
+  <div class="row">
+  <% @reviews.each do |review| %>
+    <div class="col-6 col-md-4 border" style="background:orange">
+      <div class="thumbnail">
+          <%= image_tag review.image, class: "img-fluid" if review.image.attached? %>
+        <div class="caption">
+          <%= review.model_of_car %>
+          <p>...</p>
+          <%= link_to review_path(review.id) do %>
+          <p class="btn btn-primary">詳細</p>
+          <% end %>
+          <a href="#" class="btn btn-default" role="button">Button</a></p>
+        </div>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>
+<%# /レビュー一覧表示　%>
 
