@@ -1,4 +1,28 @@
-.review-img {
-  width: 33vh;
-  height: 33vh;
+.top-image {
+  height: 500px;
 }
+
+.container {
+  padding: 40px 0 0 0;
+  background-color: white;
+}
+
+.content {
+  padding: 30px 0 0 50px;
+}
+
+.heading-text {
+  font-size: 30px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.page {
+  width: 100vw;
+  background-color: rgb(223, 237, 241);
+}
+
+
+
+
+

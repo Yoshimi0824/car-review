@@ -1,24 +1,48 @@
 <%= render "shared/header" %>
+
+
+<div class="top-image" style="background: url(<%= asset_path "2117554_m.jpg" %>) center; background-size:cover;">
+  <div class="content">
+      <h1 class="display-4">Welcome to Car-Review</h1>
+      <p class="lead">会員登録をして車のレビューを書いてみよう！</p>
+  </div>
+</div>
+
   
+
+
+
 <%# レビュー一覧表示　%>
+<div class="page">
 <div class="container">
+  <div class="heading">
+    <p class="heading-text">新着レビュー</p>
+  </div>
   <div class="row">
-  <% @reviews.each do |review| %>
-    <div class="col-6 col-md-4 border" style="background:orange">
-      <div class="thumbnail">
+    <% @reviews.each do |review| %>
+      <div class="col-md-4">
+        <div class="card mb-4 shadow-sm">
           <%= image_tag review.image, class: "img-fluid" if review.image.attached? %>
-        <div class="caption">
-          <%= review.model_of_car %>
-          <p>...</p>
-          <%= link_to review_path(review.id) do %>
-          <p class="btn btn-primary">詳細</p>
-          <% end %>
-          <a href="#" class="btn btn-default" role="button">Button</a></p>
+          <div class="card-body">
+            <div class="card-text">
+              <p><%= review.automaker.name %></p>
+              <p><%= review.model_of_car%></p>
+            </div>
+            <div class="d-flex justify-content-between align-items-center">
+              <div class="btn-group">
+                <%= link_to review_path(review.id) do %>
+                  <button type="button" class="btn btn-sm btn-outline-secondary">詳細</button>
+                <% end %>
+                <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+              </div>
+              <small class="text-muted">9 mins</small>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
     <% end %>
   </div>
+</div>
 </div>
 <%# /レビュー一覧表示　%>
 
