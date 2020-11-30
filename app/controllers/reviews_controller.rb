@@ -21,7 +21,13 @@ class ReviewsController < ApplicationController
     @review = Review.find(params[:id])
   end
 
+  def edit
+    @review = Review.find(params[:id])
+    redirect_to action: :index unless @review.user_id == current_user.id
+  end
+
   def destroy
+    @review = Review.find(params[:id])
     @review.destroy if @review.user_id == current_user.id
     redirect_to root_path
   end
