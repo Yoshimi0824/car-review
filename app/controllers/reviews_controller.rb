@@ -1,4 +1,9 @@
 class ReviewsController < ApplicationController
+  
+  def index
+    @reviews = Review.all.order('created_at DESC')
+  end
+  
   def new
     @review = Review.new
   end
@@ -10,6 +15,15 @@ class ReviewsController < ApplicationController
     else
       render :new
     end
+  end
+
+  def show
+    @review = Review.find(params[:id])
+  end
+
+  def destroy
+    @review.destroy if @review.user_id == current_user.id
+    redirect_to root_path
   end
 
   private
