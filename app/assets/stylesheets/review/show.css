@@ -1,0 +1,33 @@
+.flex {
+  display: flex;
+}
+
+.image-size {
+  height: 400px;
+  width: 600px;
+}
+
+span {
+  font-size: 35px;
+}
+
+li {
+  list-style: none;
+}
+
+.evaluation-list {
+  display: flex;
+  font-size: 20px;
+  width: 80%;
+  justify-content: space-between;
+  
+}
+
+.evaluation-list-child {
+  padding:0 11px 0 0px;
+  vertical-align: bottom;
+}
+
+.list-border {
+  border-right: 1px solid #ccc;
+}
