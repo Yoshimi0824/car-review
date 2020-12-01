@@ -1,14 +1,14 @@
-<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 bg-white border-bottom shadow-sm ">
   <h5 class="my-0 mr-md-auto font-weight-normal"><%= link_to 'CAR REVIEW', root_path%></h5>
     <nav class="my-2 my-md-0 mr-md-3">
       <% if user_signed_in? %>
-      <%= link_to current_user.nickname, "#", class: "p-2 text-dark" %>
+        <%= link_to current_user.nickname, "#", class: "p-2 text-dark" %>
+        <%= link_to '新規投稿', new_review_path, class: "p-2 text-dark" %>
+        <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "p-2 text-dark" %>
+      <% else %>
+        <%= link_to '新規登録', new_user_registration_path, class:"p-2 text-dark" %>
       <% end %>
-      <%= link_to '新規投稿', new_review_path, class: "p-2 text-dark" %>
-      <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "p-2 text-dark" %>
-      <%= link_to '新規登録', new_user_registration_path, class:"p-2 text-dark" %>
     </nav>
     <%= link_to 'Sign up', new_user_session_path, class:"btn btn-outline-primary" %>
 </div>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+ 
