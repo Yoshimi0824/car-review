@@ -1,6 +1,13 @@
 class CommentsController < ApplicationController
+  
+
   def create
     @comment = Comment.new(comment_params)
+    if @comment.save
+      redirect_to review_path(@comment.review.id)
+    else
+      render review_path(@comment.review.id)
+    end
   end
 
   private

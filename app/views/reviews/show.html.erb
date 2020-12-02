@@ -52,12 +52,29 @@
       <!-- /レビュー内容 -->
 
       <!-- コメント欄　-->
-      <%= form_with model: @comment do |f| %>
+      <%= form_with(model: [@review, @comment], local: true) do |f| %>
       <div class="form-group">
         <label for="exampleTextarea">コメント入力欄</label>
         <%= f.text_area :text, rows: 3, class:"form-control"%>
+        <%= f.submit 'コメントする', class:"btn btn-primary"%>
       </div>
       <% end %>
+      
+      <div class="card card-outline-secondary my-4">
+        <div class="card-header">
+          コメント欄
+        </div>
+        <% @comments.each do |comment| %>
+        <div id='comments'>
+            <div class="card-body">
+                <p><%= comment.text%></p>
+                <small class="text-muted">投稿者:<%= comment.user.nickname%></small><br>
+                <small class="text-muted"><%= comment.created_at%></small>
+            </div>
+            <hr>
+        </div>
+        <% end %>
+      </div>
       <!-- /コメント欄 -->
 
     </div>
