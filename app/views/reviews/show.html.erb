@@ -39,7 +39,6 @@
         </div>
         <div class="card-body">
           <p><%= @review.good_point%></p>
-          <small class="text-muted">Posted by Anonymous on 3/1/17</small>
         </div>
       </div>
       <div class="card card-outline-secondary my-4">
@@ -48,17 +47,16 @@
         </div>
         <div class="card-body">
           <p><%= @review.bad_point%></p>
-          <small class="text-muted">Posted by Anonymous on 3/1/17</small>
         </div>
       </div>
       <!-- /レビュー内容 -->
 
       <!-- コメント欄　-->
-      <%= form_with(model: [@review, @comment], local: true) do |f| %>
+      <%= form_with(model: [@review, @comment], local: true, id: "form") do |f| %>
       <div class="form-group">
         <label for="exampleTextarea">コメント入力欄</label>
-        <%= f.text_area :text, rows: 3, class:"form-control"%>
-        <%= f.submit 'コメントする', class:"btn btn-primary"%>
+        <%= f.text_area :text, rows: 3, class:"form-control", id: "content"%>
+        <%= f.submit 'コメントする', class:"btn btn-primary", id: "submit"%>
       </div>
       <% end %>
       
@@ -66,15 +64,18 @@
         <div class="card-header">
           コメント欄
         </div>
-        <% @comments.each do |comment| %>
-        <div id='comments'>
-            <div class="card-body">
+        <% if @comments%>
+        <% @comments.reverse.each do |comment| %>
+        <div id='comments '>
+            <div class="card-body" id="list">
                 <p><%= comment.text%></p>
                 <small class="text-muted">投稿者:<%= comment.user.nickname%></small><br>
                 <small class="text-muted"><%= comment.created_at.to_s(:datetime_jp)%></small>
+                <%= link_to '削除', review_comment_path(@review, comment), method: :delete %>
             </div>
             <hr>
         </div>
+        <% end %>
         <% end %>
       </div>
       <!-- /コメント欄 -->
