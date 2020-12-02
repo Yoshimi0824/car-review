@@ -1,63 +1,66 @@
 <%= render "shared/header" %>
 
 <div class="container">
-
-    <div class="row">
-
-      <div class="col-lg-3">
-        <h1 class="my-4">レビュー詳細</h1>
-        <div class="list-group">
+  <div class="row">
+    <!-- 投稿者欄 -->
+    <div class="col-lg-3">
+      <h1 class="my-4">レビュー詳細</h1>
+      <div class="list-group">
           <%= link_to "投稿者：#{@review.user.nickname}", '#', class:"list-group-item"%>
           <%= link_to '編集', edit_review_path(@review.id), method: :get, class:"list-group-item" %>
           <%= link_to '削除', review_path(@review.id), method: :delete, class:"list-group-item" %>
+      </div>
+    </div>
+    <!-- /投稿者欄 -->
+
+    <!-- レビュー内容 -->
+    <div class="col-lg-9">
+      <div class="card mt-4">
+        <%= image_tag @review.image ,class:"card-img-top img-fluid" %>
+        <div class="card-body">
+          <h3 class="card-title"><%=@review.automaker.name%>  /  <%= @review.model_of_car%></h3>
+          <h4><%= @review.era_name.name%>  <%= @review.model_year%> 年式</h4>
+          <hr>
+          <ul class="evaluation-list">
+            <li class="evaluation-list-child list-border">デザイン:<%= @review.design_id%></li>
+            <li class="evaluation-list-child list-border">走行性能:<%= @review.driving_performance_id%></li>
+            <li class="evaluation-list-child list-border">乗り心地:<%=@review.ride_comfort_id%></li>
+            <li class="evaluation-list-child list-border">積載性:<%= @review.lording_id%></li>
+            <li class="evaluation-list-child list-border">燃費:<%= @review.fuel_economy_id%></li>
+            <li class="evaluation-list-child">価格:<%= @review.price_id%></p></li>
+          </ul>
         </div>
       </div>
-      <!-- /.col-lg-3 -->
-
-      <div class="col-lg-9">
-
-        <div class="card mt-4">
-          <%= image_tag @review.image ,class:"card-img-top img-fluid" %>
-          <div class="card-body">
-            <h3 class="card-title"><%=@review.automaker.name%>  /  <%= @review.model_of_car%></h3>
-            <h4><%= @review.era_name.name%>  <%= @review.model_year%> 年式</h4>
-            <hr>
-            <ul class="evaluation-list">
-              <li class="evaluation-list-child list-border">デザイン:<%= @review.design_id%></li>
-              <li class="evaluation-list-child list-border">走行性能:<%= @review.driving_performance_id%></li>
-              <li class="evaluation-list-child list-border">乗り心地:<%=@review.ride_comfort_id%></li>
-              <li class="evaluation-list-child list-border">積載性:<%= @review.lording_id%></li>
-              <li class="evaluation-list-child list-border">燃費:<%= @review.fuel_economy_id%></li>
-              <li class="evaluation-list-child">価格:<%= @review.price_id%></p></li>
-            </ul>
-          </div>
+      <div class="card card-outline-secondary my-4">
+        <div class="card-header">
+          良い点
         </div>
-        <!-- /.card -->
-
-        <div class="card card-outline-secondary my-4">
-          <div class="card-header">
-            良い点
-          </div>
-          <div class="card-body">
-            <p><%= @review.good_point%></p>
-            <small class="text-muted">Posted by Anonymous on 3/1/17</small>
-          </div>
+        <div class="card-body">
+          <p><%= @review.good_point%></p>
+          <small class="text-muted">Posted by Anonymous on 3/1/17</small>
         </div>
-        <div class="card card-outline-secondary my-4">
-          <div class="card-header">
-            悪い点
-          </div>
-          <div class="card-body">
-            <p><%= @review.bad_point%></p>
-            <small class="text-muted">Posted by Anonymous on 3/1/17</small>
-          </div>
-        </div>
-        <!-- /.card -->
-
       </div>
-      <!-- /.col-lg-9 -->
+      <div class="card card-outline-secondary my-4">
+        <div class="card-header">
+          悪い点
+        </div>
+        <div class="card-body">
+          <p><%= @review.bad_point%></p>
+          <small class="text-muted">Posted by Anonymous on 3/1/17</small>
+        </div>
+      </div>
+      <!-- /レビュー内容 -->
+
+      <!-- コメント欄　-->
+      <%= form_with model: @comment do |f| %>
+      <div class="form-group">
+        <label for="exampleTextarea">コメント入力欄</label>
+        <%= f.text_area :text, rows: 3, class:"form-control"%>
+      </div>
+      <% end %>
+      <!-- /コメント欄 -->
 
     </div>
-
+      <!-- /.col-lg-9 -->
   </div>
 </div>
