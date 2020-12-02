@@ -7,7 +7,9 @@ class CommentsController < ApplicationController
     if @comment.save
       redirect_to review_path(@comment.review.id)
     else
-      render review_path(@comment.review.id)
+      @review = @comment.review
+      @comments = @review.comments
+      render "reviews/show"
     end
   end
 

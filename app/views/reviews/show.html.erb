@@ -51,8 +51,11 @@
       </div>
       <!-- /レビュー内容 -->
 
+      
+
       <!-- コメント欄　-->
       <%= form_with(model: [@review, @comment], local: true, id: "form") do |f| %>
+      <%= render "shared/error_messages", model: f.object %>
       <div class="form-group">
         <label for="exampleTextarea">コメント入力欄</label>
         <%= f.text_area :text, rows: 3, class:"form-control", id: "content"%>
@@ -60,6 +63,8 @@
       </div>
       <% end %>
       
+      
+
       <div class="card card-outline-secondary my-4">
         <div class="card-header">
           コメント欄
@@ -71,7 +76,9 @@
                 <p><%= comment.text%></p>
                 <small class="text-muted">投稿者:<%= comment.user.nickname%></small><br>
                 <small class="text-muted"><%= comment.created_at.to_s(:datetime_jp)%></small>
-                <%= link_to '削除', review_comment_path(@review, comment), method: :delete %>
+                <% if current_user.id == comment.user_id%>
+                  <%= link_to '削除', review_comment_path(@review, comment), method: :delete %>
+                <% end %>
             </div>
             <hr>
         </div>
