@@ -29,6 +29,8 @@
             <li class="evaluation-list-child list-border">燃費:<%= @review.fuel_economy_id%></li>
             <li class="evaluation-list-child">価格:<%= @review.price_id%></p></li>
           </ul>
+          <hr>
+          <small class="text-muted"><%= @review.created_at.to_s(:datetime_jp)%></small>
         </div>
       </div>
       <div class="card card-outline-secondary my-4">
@@ -69,7 +71,7 @@
             <div class="card-body">
                 <p><%= comment.text%></p>
                 <small class="text-muted">投稿者:<%= comment.user.nickname%></small><br>
-                <small class="text-muted"><%= comment.created_at%></small>
+                <small class="text-muted"><%= comment.created_at.to_s(:datetime_jp)%></small>
             </div>
             <hr>
         </div>
