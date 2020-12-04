@@ -14,6 +14,7 @@ class CreateReviews < ActiveRecord::Migration[6.0]
       t.integer :price_id,               null: false
       t.text :good_point,                null: false
       t.text :bad_point,                 null: false
+      t.integer :likes_count
       t.references :user,                foreign_key: true
       t.timestamps
     end

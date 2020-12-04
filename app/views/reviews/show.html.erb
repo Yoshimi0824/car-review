@@ -31,6 +31,13 @@
           </ul>
           <hr>
           <small class="text-muted"><%= @review.created_at.to_s(:datetime_jp)%></small>
+          
+          <!-- いいね機能 -->
+          <div id="like-<%= @review.id %>">
+            <%= render 'likes/like', {review: @review} %>
+          </div>
+          <!-- /いいね機能-->
+
         </div>
       </div>
       <div class="card card-outline-secondary my-4">
