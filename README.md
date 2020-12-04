@@ -75,6 +75,7 @@ CAR-REVIEW
 | price_id               | integer    | null: false                    |
 | good_point             | text       | null: false                    |
 | bad_point              | text       | null: false                    |
+| likes_count            | integer    |                                |
 | user                   | references | null: false, foreign_key: true |
 
 ### Association

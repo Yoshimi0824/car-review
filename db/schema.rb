@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_01_052827) do
+ActiveRecord::Schema.define(version: 2020_12_02_080356) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -55,12 +55,21 @@ ActiveRecord::Schema.define(version: 2020_12_01_052827) do
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
+  create_table "likes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "review_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["review_id"], name: "index_likes_on_review_id"
+    t.index ["user_id"], name: "index_likes_on_user_id"
+  end
+
   create_table "reviews", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "automaker_id", null: false
     t.string "model_of_car", null: false
     t.string "grade", null: false
     t.integer "era_name_id", null: false
-    t.integer "model_year"
+    t.integer "model_year", null: false
     t.integer "design_id", null: false
     t.integer "driving_performance_id", null: false
     t.integer "ride_comfort_id", null: false
@@ -69,6 +78,7 @@ ActiveRecord::Schema.define(version: 2020_12_01_052827) do
     t.integer "price_id", null: false
     t.text "good_point", null: false
     t.text "bad_point", null: false
+    t.integer "likes_count"
     t.bigint "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -94,5 +104,7 @@ ActiveRecord::Schema.define(version: 2020_12_01_052827) do
   add_foreign_key "addresses", "users"
   add_foreign_key "comments", "reviews"
   add_foreign_key "comments", "users"
+  add_foreign_key "likes", "reviews"
+  add_foreign_key "likes", "users"
   add_foreign_key "reviews", "users"
 end

@@ -3,6 +3,7 @@ class User < ApplicationRecord
   has_one :address
   has_many :reviews
   has_many :comments
+  has_many :likes
 
   with_options presence: true do
     validates :nickname, uniqueness: { case_sensitive: true }

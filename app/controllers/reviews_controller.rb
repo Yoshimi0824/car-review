@@ -22,6 +22,7 @@ class ReviewsController < ApplicationController
   def show
     @comment = Comment.new
     @comments = @review.comments.includes(:user)
+    @like = Like.where(review_id: params[:review_id])
   end
 
   def edit
