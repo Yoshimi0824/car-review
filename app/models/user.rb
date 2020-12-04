@@ -4,6 +4,7 @@ class User < ApplicationRecord
   has_many :reviews
   has_many :comments
   has_many :likes
+  has_many :sns_credentials
 
   with_options presence: true do
     validates :nickname, uniqueness: { case_sensitive: true }
@@ -16,5 +17,6 @@ class User < ApplicationRecord
   validates_format_of :password, with: PASSWORD_REGEX, message: 'には英字と数字の両方を含めて設定してください'
 
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+         :recoverable, :rememberable, :validatable, :omniauthable, omniauth_providers: [:facebook, :google_oauth2]
+
 end
