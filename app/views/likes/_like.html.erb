@@ -1,12 +1,17 @@
-<% if Like.find_by(user_id: current_user.id, review_id: review.id) %>
-  いいね！：
-  <%= link_to review_like_path(review, review.likes), method: :delete, remote: true do %>
-    <i class="fas fa-heart"></i>
-  <% end %>
-<% else %>
-  いいね！：
-  <%= link_to review_likes_path(review), method: :post, remote: true do %>
-    <i class="far fa-heart"></i>
+<% if user_signed_in? %>
+  <% if Like.find_by(user_id: current_user.id, review_id: review.id) %>
+    いいね！：
+    <%= link_to review_like_path(review, review.likes), method: :delete, remote: true do %>
+      <i class="fas fa-heart"></i>
     <% end %>
+  <% else %>
+    いいね！：
+    <%= link_to review_likes_path(review), method: :post, remote: true do %>
+      <i class="far fa-heart"></i>
+      <% end %>
+  <% end %>
+  <%= review.likes.length %>
+<% else %>
+  いいね！：<i class="fas fa-heart"></i>
+  <%= review.likes.length%>
 <% end %>
-<%= review.likes.length %>
