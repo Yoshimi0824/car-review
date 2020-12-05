@@ -9,6 +9,7 @@ RSpec.describe User, type: :model do
     context 'ユーザー登録２ページ目へ進めるとき' do
       it '全ての項目を記入していれば進める' do
         expect(@user).to be_valid
+        binding.pry
       end
     end
     context 'ユーザー登録２ページ目に進めないとき' do

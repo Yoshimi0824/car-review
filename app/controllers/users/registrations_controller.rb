@@ -27,6 +27,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @user.save
     session["devise.regist_data"]["user"].clear
     sign_in(:user, @user)
+    redirect_to root_path
   end
  
   private
