@@ -7,8 +7,10 @@
       <h1 class="my-4">レビュー詳細</h1>
       <div class="list-group">
           <%= link_to "投稿者：#{@review.user.nickname}", '#', class:"list-group-item"%>
-          <%= link_to '編集', edit_review_path(@review.id), method: :get, class:"list-group-item" %>
-          <%= link_to '削除', review_path(@review.id), method: :delete, class:"list-group-item" %>
+          <% if current_user.id == @review.user.id%>
+            <%= link_to '編集', edit_review_path(@review.id), method: :get, class:"list-group-item" %>
+            <%= link_to '削除', review_path(@review.id), method: :delete, class:"list-group-item" %>
+          <% end %>
       </div>
     </div>
     <!-- /投稿者欄 -->
