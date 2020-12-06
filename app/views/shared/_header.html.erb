@@ -11,6 +11,8 @@
         <%= link_to 'Googleで登録', user_google_oauth2_omniauth_authorize_path, method: :post%>
       <% end %>
     </nav>
-    <%= link_to 'ログイン', new_user_session_path, class:"btn btn-outline-primary" %>
+    <% unless user_signed_in? %>
+      <%= link_to 'ログイン', new_user_session_path, class:"btn btn-outline-primary" %>
+    <% end %>
 </div>
  
