@@ -67,7 +67,7 @@
         <%= form_with(model: [@review, @comment], local: true, id: "form") do |f| %>
           <%= render "shared/error_messages", model: f.object %>
           <div class="form-group">
-            <label for="exampleTextarea">コメント入力欄</label>
+            <label for="content">コメント入力欄</label>
             <%= f.text_area :text, rows: 3, class:"form-control", id: "content"%>
             <%= f.submit 'コメントする', class:"btn btn-primary", id: "submit"%>
           </div>
