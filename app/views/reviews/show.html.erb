@@ -7,7 +7,7 @@
       <h1 class="my-4">レビュー詳細</h1>
       <div class="list-group">
           <%= link_to "投稿者：#{@review.user.nickname}", '#', class:"list-group-item"%>
-          <% if current_user.id == @review.user.id%>
+          <% if user_signed_in? && (current_user.id == @review.user.id) %>
             <%= link_to '編集', edit_review_path(@review.id), method: :get, class:"list-group-item" %>
             <%= link_to '削除', review_path(@review.id), method: :delete, class:"list-group-item" %>
           <% end %>
@@ -63,13 +63,15 @@
       
 
       <!-- コメント欄　-->
-      <%= form_with(model: [@review, @comment], local: true, id: "form") do |f| %>
-      <%= render "shared/error_messages", model: f.object %>
-      <div class="form-group">
-        <label for="exampleTextarea">コメント入力欄</label>
-        <%= f.text_area :text, rows: 3, class:"form-control", id: "content"%>
-        <%= f.submit 'コメントする', class:"btn btn-primary", id: "submit"%>
-      </div>
+      <% if user_signed_in? %>
+        <%= form_with(model: [@review, @comment], local: true, id: "form") do |f| %>
+          <%= render "shared/error_messages", model: f.object %>
+          <div class="form-group">
+            <label for="exampleTextarea">コメント入力欄</label>
+            <%= f.text_area :text, rows: 3, class:"form-control", id: "content"%>
+            <%= f.submit 'コメントする', class:"btn btn-primary", id: "submit"%>
+          </div>
+        <% end %>
       <% end %>
       
       

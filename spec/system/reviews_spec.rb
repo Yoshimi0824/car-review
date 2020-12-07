@@ -88,6 +88,7 @@ RSpec.describe "レビュー投稿", type: :system do
   end 
 end
 
+
 RSpec.describe 'レビュー編集', type: :system do
   before do
     @review1 = FactoryBot.create(:review)
@@ -193,5 +194,89 @@ RSpec.describe 'レビュー編集', type: :system do
       expect(page).to have_no_content('編集')
     end
   end
+end
 
+
+RSpec.describe 'レビュー削除', type: :system do
+  before do
+    @review = FactoryBot.create(:review)
+    @user2 = FactoryBot.create(:user)
+  end
+
+  context 'レビューが削除出来るとき' do
+    it 'レビュー投稿者は自分のレビューを削除できる' do
+      # レビューを投稿したユーザーでログインする
+      visit new_user_session_path
+      fill_in 'user[email]', with: @review.user.email
+      fill_in 'user[password]', with: @review.user.password
+      find('input[name="commit"]').click
+      expect(current_path).to eq root_path
+      # レビューの詳細ページへ移動する
+      visit review_path(@review)
+      # 削除ボタンを押すと、Reviewモデルのレコードが１つ減る
+      expect{
+        find_link('削除', href: review_path(@review)).click
+      }.to change { Review.count }.by(-1)
+      # トップページに遷移していることを確認する
+      expect(current_path).to eq root_path
+      # トップページにレビューの内容がないことを確認する
+      expect(page).to have_no_content("#{@review.automaker.name}")
+      expect(page).to have_no_content("#{@review.model_of_car}")
+      expect(page).to have_no_content("投稿者：#{@review.user.nickname}")
+    end
+  end
+
+  context 'レビューが削除できないとき' do
+    it 'レビュー投稿者以外のユーザーでログインするとレビュー削除ができない' do
+      # レビューを投稿した以外のユーザーでログインする
+      visit new_user_session_path
+      fill_in 'user[email]', with: @user2.email
+      fill_in 'user[password]', with: @user2.password
+      find('input[name="commit"]').click
+      expect(current_path).to eq root_path
+      # レビューの詳細ページへ移動する
+      visit review_path(@review)
+      # 詳細ページに削除ボタンが存在しない
+      expect(page).to have_no_content('削除')
+    end
+
+    it 'ログインしないとレビュー削除ができない' do
+      # レビューの詳細ページへ移動する
+      visit review_path(@review)
+      # 詳細ページに削除ボタンが存在しない
+      expect(page).to have_no_content('削除')
+    end
+  end
+end
+
+
+RSpec.describe 'レビュー詳細', type: :system do
+  before do
+    @review = FactoryBot.create(:review)
+    @user2 = FactoryBot.create(:user)
+  end
+
+  context 'ログインしていないとき' do
+    it 'ログインしていないとコメント入力欄が表示されない' do
+      # レビューの詳細ページへ移動する
+      visit review_path(@review)
+      # レビューの詳細ページにコメント入力欄が存在しない
+      expect(page).to have_no_content('コメント入力欄')
+    end
+  end
+
+  context 'ログインしているとき' do
+    it 'ログインすると、コメント入力欄が表示される' do
+      # レビューを投稿したユーザーでログインする
+      visit new_user_session_path
+      fill_in 'user[email]', with: @review.user.email
+      fill_in 'user[password]', with: @review.user.password
+      find('input[name="commit"]').click
+      expect(current_path).to eq root_path
+      # レビューの詳細ページへ移動する
+      visit review_path(@review)
+      # レビュー詳細ページにコメント入力欄があることを確認する
+      expect(page).to have_content('コメント入力欄')
+    end
+  end
 end
