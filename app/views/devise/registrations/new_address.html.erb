@@ -8,22 +8,22 @@
       <div class="panel-heading">住所情報登録</div>
       <div class="panel-body">
           <div class="form-group">
-            <label class="control-label">郵便番号</label>
+            <label class="control-label", for="address_postal_code">郵便番号</label>
             <%= f.text_field :postal_code, class:"form-control", placeholder:"ハイフン(-)を入れてください" %>
           </div>
           <div class="form-group">
-            <label class="control-label">都道府県</label>
+            <label class="control-label", for="address_prefecture_id">都道府県</label>
             <%= f.collection_select(:prefecture_id, Prefecture.all, :id, :name, {}, class:"select-box") %>
           <div class="form-group">
-            <label class="control-label">市区町村</label>
+            <label class="control-label", for="address_municipality">市区町村</label>
             <%= f.text_field :municipality, class:"form-control", placeholder:"横浜市中区" %>
           </div>
           <div class="form-group">
-            <label class="control-label">番地</label>
+            <label class="control-label", for="address_street_number">番地</label>
             <%= f.text_field :street_number, class:"form-control", placeholder:"青山1-1-1" %>
           </div>
           <div class="form-group">
-            <label class="control-label">建物名</label>
+            <label class="control-label", for="address_building_name">建物名</label>
             <%= f.text_field :building_name, class:"form-control", placeholder:"柳ビル201" %>
           </div>
           <div class="btn btn-default">
