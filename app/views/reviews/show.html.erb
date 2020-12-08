@@ -87,7 +87,7 @@
                 <p><%= comment.text%></p>
                 <small class="text-muted">投稿者:<%= comment.user.nickname%></small><br>
                 <small class="text-muted"><%= comment.created_at.to_s(:datetime_jp)%></small>
-                <% if current_user.id == comment.user_id%>
+                <% if user_signed_in? && (current_user.id == comment.user_id) %>
                   <%= link_to '削除', review_comment_path(@review, comment), method: :delete %>
                 <% end %>
             </div>
@@ -102,3 +102,5 @@
       <!-- /.col-lg-9 -->
   </div>
 </div>
+
+<%= render "shared/footer" %>

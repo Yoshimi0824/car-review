@@ -3,12 +3,10 @@
     <nav class="my-2 my-md-0 mr-md-3">
       <% if user_signed_in? %>
         <%= link_to current_user.nickname, "#", class: "p-2 text-dark" %>
-        <%= link_to '新規投稿', new_review_path, class: "p-2 text-dark" %>
-        <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "p-2 text-dark" %>
+        <%= link_to '新規投稿', new_review_path, class: "btn btn-outline-primary" %>
+        <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "btn btn-outline-primary" %>
       <% else %>
-        <%= link_to '新規登録', new_user_registration_path, class:"p-2 text-dark" %>
-        <%= link_to 'Facebookで登録', user_facebook_omniauth_authorize_path, method: :post%>
-        <%= link_to 'Googleで登録', user_google_oauth2_omniauth_authorize_path, method: :post%>
+        <%= link_to '新規登録', new_user_registration_path, class:"btn btn-outline-primary" %>
       <% end %>
     </nav>
     <% unless user_signed_in? %>
