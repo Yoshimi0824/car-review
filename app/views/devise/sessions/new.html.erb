@@ -10,20 +10,14 @@
       </div>
   </div>
 
-  <div class="row kpx_row-sm-offset-3 kpx_socialButtons">
-    <div class="col-xs-3 col-sm-3">
-      <%= link_to user_facebook_omniauth_authorize_path, method: :post, class:"btn btn-lg btn-block kpx_btn-facebook" do %>
-        <i class="fab fa-facebook-square fa-2x"></i>
-        <span class="hidden-xs"></span>
-      <% end %>
-    </div>
-          
+  <div class="row  kpx_socialButtons sns-icon-outer">
     <div class="col-xs-3 col-sm-3">
       <%= link_to user_google_oauth2_omniauth_authorize_path, method: :post, class:"btn btn-lg btn-block kpx_btn-google-plus" do %>
         <i class="fab fa-google-plus-g fa-2x"></i>
         <span class="hidden-xs"></span>
       <% end %>
     </div>  
+    
   </div><br>
 
  
@@ -59,6 +53,6 @@
     </div>
   </div>
 </div>
-
+  
 
 <%= render "shared/footer" %>
