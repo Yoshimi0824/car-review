@@ -151,7 +151,29 @@ GoogleMapのAPIを導入し、ユーザー登録の際に入力した住所を�
 | user   | references | null: false, foreign_key: true |
 | review | references | null: false, foreign_key: true |
 
+### Association
 - belongs_to :user
 - belongs_to :review
+
+## likes テーブル
+| Column | Type       | Options                        |
+| ------ | ---------- | ------------------------------ |
+| user   | references | null: false, foreign_key: true |
+| review | references | null: false, foreign_key: true |
+
+### Association
+- belongs_to :user
+- belongs_to :review
+
+## SnsCredentials テーブル
+| Column     | Type       | Options                        |
+| ---------- | ---------- | ------------------------------ |
+| provider   | string     |                                |
+| uid        | string     |                                |
+| user       | references | null: false, foreign_key: true |
+
+### Association
+- belongs_to :user
+
 
 
