@@ -1,5 +1,5 @@
-<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 bg-white border-bottom shadow-sm ">
-  <h5 class="my-0 mr-md-auto font-weight-normal"><%= link_to 'CAR REVIEW', root_path%></h5>
+<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 border-bottom shadow-sm theme-color">
+  <h5 class="my-0 mr-md-auto font-weight-normal "><%= link_to 'CAR REVIEW', root_path%></h5>
     <nav class="my-2 my-md-0 mr-md-3">
       <% if user_signed_in? %>
         <%= link_to current_user.nickname, "#", class: "p-2 text-dark" %>

@@ -1,5 +1,5 @@
 class ReviewsController < ApplicationController
-  before_action :authenticate_user!, except: [:index, :show]
+  before_action :authenticate_user!, except: [:index, :show, :search]
   before_action :set_review, only: [:show, :edit, :update, :destroy]
   before_action :search_product, only: [:index, :search]
 
@@ -44,7 +44,7 @@ class ReviewsController < ApplicationController
   end
 
   def search
-    @results = @p.result.includes(:user)
+    @results = @p.result.includes(:user).order('created_at DESC')
   end
 
   private

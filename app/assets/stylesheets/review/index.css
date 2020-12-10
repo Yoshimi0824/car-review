@@ -22,8 +22,8 @@
 }
 
 
-.page-color {
-  background-color: lightblue;
+.theme-color {
+  background-color: rgb(226, 246, 247);
 }
 
 a {
@@ -37,13 +37,12 @@ a {
   min-height: 100vh;
 }
 
-footer {
-  margin-top: auto;
-  
-}
+
 
 .review-img {
   width: 100%;
   height: 30vh;
 }
+
+
 
