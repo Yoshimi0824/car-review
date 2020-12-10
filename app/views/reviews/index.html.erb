@@ -22,7 +22,13 @@
     <% @reviews.each do |review| %>
       <div class="col-md-4">
         <div class="card mb-4 shadow-sm">
-          <%= image_tag review.image, class: "img-fluid" if review.image.attached? %>
+          <div class="image-box">
+            <% if review.image.present? %>
+              <%= image_tag review.image, class: "review_img" %>
+            <% else %>
+              <%= image_tag "noimage.png", class: "review_img" %>
+            <% end %>
+          </div>
           <div class="card-body">
             <div class="card-text">
               <p><%= review.automaker.name %>  /  <%= review.model_of_car%></p>
