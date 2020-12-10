@@ -9,7 +9,17 @@
 </div>
 
   
-
+<div >
+  <h1>
+    レビュー検索
+  </h1>
+  <%= search_form_for @p, url: search_reviews_path do |f| %>
+    <%= f.label :model_of_car_eq, '車種名' %>
+    <%= f.collection_select :model_of_car_eq, @review_model_of_car, :model_of_car, :model_of_car,  include_blank: '指定なし' %>
+    <br>
+    <%= f.submit '検索' %>
+  <% end %>
+</div>
 
 
 <%# レビュー一覧表示　%>
@@ -24,9 +34,9 @@
         <div class="card mb-4 shadow-sm">
           <div class="image-box">
             <% if review.image.present? %>
-              <%= image_tag review.image, class: "review_img" %>
+              <%= image_tag review.image, class: "review-img" %>
             <% else %>
-              <%= image_tag "noimage.png", class: "review_img" %>
+              <%= image_tag "noimage.png", class: "review-img" %>
             <% end %>
           </div>
           <div class="card-body">

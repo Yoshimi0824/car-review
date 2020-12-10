@@ -22,6 +22,9 @@
 }
 
 
+.page-color {
+  background-color: lightblue;
+}
 
 a {
   text-decoration: none;
@@ -39,7 +42,7 @@ footer {
   
 }
 
-.review_img {
+.review-img {
   width: 100%;
   height: 30vh;
 }
