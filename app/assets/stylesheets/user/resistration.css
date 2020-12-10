@@ -15,10 +15,6 @@
   cursor: pointer;
 }
 
-.sns-icon {
-  width: 20%;
-  margin: 0 auto;
-}
 
 .sns-icon-outer {
   display: flex;

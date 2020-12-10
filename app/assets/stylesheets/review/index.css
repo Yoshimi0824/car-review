@@ -1,3 +1,11 @@
+body {
+  margin: 0;
+  display: flex;
+  flex-flow: column;
+  min-height: 100vh;
+}
+
+
 .top-image {
   height: 500px;
 }
@@ -28,13 +36,6 @@
 
 a {
   text-decoration: none;
-}
-
-
-.wrapper {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
 }
 
 
