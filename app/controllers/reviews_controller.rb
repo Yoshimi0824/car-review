@@ -1,9 +1,11 @@
 class ReviewsController < ApplicationController
-  before_action :authenticate_user!, except: [:index, :show]
+  before_action :authenticate_user!, except: [:index, :show, :search]
   before_action :set_review, only: [:show, :edit, :update, :destroy]
+  before_action :search_product, only: [:index, :search]
 
   def index
     @reviews = Review.all.order('created_at DESC')
+    set_review_column
   end
   
   def new
@@ -41,6 +43,10 @@ class ReviewsController < ApplicationController
     redirect_to root_path
   end
 
+  def search
+    @results = @p.result.includes(:user).order('created_at DESC')
+  end
+
   private
 
   def review_params
@@ -49,6 +55,14 @@ class ReviewsController < ApplicationController
   
   def set_review
     @review = Review.find(params[:id])
+  end
+
+  def search_product
+    @p = Review.ransack(params[:q]) 
+  end
+
+  def set_review_column
+    @review_model_of_car = Review.select("model_of_car").distinct  # 重複なくnameカラムのデータを取り出す
   end
   
 end
