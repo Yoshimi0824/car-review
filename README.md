@@ -30,6 +30,8 @@ https://car-review-31718.herokuapp.com/
   （投稿したレビューであれば編集、削除ができます）  
 　　↓  
 画面右上の「ログアウト」を押すとログアウトします  
+  
+トップページのフォームよりレビューの検索もできるようになりました  
 # 目指した課題解決
 
 車両購入の際に、直接ディーラーに行って話を聞くといくのは少しハードルが高いと思っていらっしゃる方が多いと思います。  
@@ -90,6 +92,10 @@ GoogleMapのAPIを導入し、ユーザー登録の際に入力した住所を�
 
 # テーブル設計
 
+## ER図
+![ER](https://user-images.githubusercontent.com/73088412/101856971-cb39b280-3ba9-11eb-8c88-581b70c8b1d9.png)
+
+
 ## users テーブル
 | Column             | Type    | Options      |
 | ------------------ | ------- | ------------ |
@@ -104,16 +110,18 @@ GoogleMapのAPIを導入し、ユーザー登録の際に入力した住所を�
 - has_many :reviews
 - has_many :comments
 - has_one :address
+- has_many :sns_credentials
 
 
 ## addresses テーブル
-| Column             | Type    | Options      |
-| ------------------ | ------- | ------------ |
-| postal_code        | string  | null: false  |
-| prefecture_id      | integer | null: false  |
-| municipality       | string  | null: false  |
-| street_number      | string  | null: false  |
-| building_name      | string  |              |
+| Column             | Type       | Options                        |
+| ------------------ | ---------- | ------------------------------ |
+| postal_code        | string     | null: false                    |
+| prefecture_id      | integer    | null: false                    |
+| municipality       | string     | null: false                    |
+| street_number      | string     | null: false                    |
+| building_name      | string     |                                |
+| user               | references | null: false, foreign_key: true |
 
 ### Associations
 
@@ -165,7 +173,7 @@ GoogleMapのAPIを導入し、ユーザー登録の際に入力した住所を�
 - belongs_to :user
 - belongs_to :review
 
-## SnsCredentials テーブル
+## sns_credentials テーブル
 | Column     | Type       | Options                        |
 | ---------- | ---------- | ------------------------------ |
 | provider   | string     |                                |
