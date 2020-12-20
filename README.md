@@ -10,8 +10,10 @@
 それに対して別のユーザーがコメントやいいねをすることができるアプリケーションです。
 
 # URL
-
-https://car-review-31718.herokuapp.com/
+### Heroku
+https://car-review-31718.herokuapp.com/  
+### EC2
+http://18.180.112.122/  
 
 
 # テスト用アカウント
