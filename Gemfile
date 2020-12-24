@@ -85,3 +85,5 @@ gem "omniauth-rails_csrf_protection"
 gem "aws-sdk-s3", require: false
 
 gem 'ransack'
+
+gem 'acts-as-taggable-on', '~> 6.0'

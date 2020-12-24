@@ -1,11 +1,12 @@
 class Review < ApplicationRecord
+
+  acts_as_taggable
   
   belongs_to :user
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_one_attached :image
-  has_many :reviews_tag_relations
-  has_many :tags, through: :review_tag_relations
+  
 
   
   with_options presence: true do
