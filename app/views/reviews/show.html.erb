@@ -32,7 +32,7 @@
             <li class="evaluation-list-child">価格:<%= @review.price_id%></p></li>
           </ul>
           <hr>
-          <small class="text-muted"><%= @review.created_at.to_s(:datetime_jp)%></small>
+          
           
           <!-- いいね機能 -->
           <div id="like-<%= @review.id %>">
@@ -40,6 +40,11 @@
           </div>
           <!-- /いいね機能-->
 
+          <div>
+            <%= render 'reviews/tag_list', {tag_list: @review.tag_list} %>
+          </div>
+
+          <small class="text-muted"><%= @review.created_at.to_s(:datetime_jp)%></small>
         </div>
       </div>
       <div class="card card-outline-secondary my-4">
