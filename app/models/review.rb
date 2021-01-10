@@ -1,6 +1,8 @@
 class Review < ApplicationRecord
 
   acts_as_taggable
+
+  paginates_per 6
   
   belongs_to :user
   has_many :comments, dependent: :destroy

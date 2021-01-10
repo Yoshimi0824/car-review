@@ -87,3 +87,5 @@ gem "aws-sdk-s3", require: false
 gem 'ransack'
 
 gem 'acts-as-taggable-on', '~> 6.0'
+
+gem 'kaminari'
